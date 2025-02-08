@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ВЕРХНЯЯ ОДЕЖДА - Fashion Store</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="announcement-bar">
+        <p>NEW COLLECTION OUT NOW</p>
+    </div>
+    
+    <div class="container">
+        <div class="overlay"></div>
+        
+        <!-- Side Menu -->
+        <nav class="side-menu">
+            <button class="close-menu">&times;</button>
+            <div class="menu-items">
+                <a href="../index.html" class="menu-item">Главная</a>
+                <a href="about.html" class="menu-item">О нас</a>
+                <a href="delivery.html" class="menu-item">Доставка</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header>
+                <div class="header-left">
+                    <button class="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <a href="../index.html" class="logo">FASHION STORE</a>
+                </div>
+                <div class="header-right">
+                    <a href="#" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </header>
+
+            <section class="category-header">
+                <h1>ВЕРХНЯЯ ОДЕЖДА</h1>
+            </section>
+
+            <section class="products">
+                <div class="page-content">
+                    <h1>ВЕРХНЯЯ ОДЕЖДА</h1>
+                    <div class="product-grid"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal">
+        <div class="cart-modal-content">
+            <button class="close-cart">&times;</button>
+            <h2>Корзина</h2>
+            <div class="cart-items"></div>
+            <div class="cart-total">
+                <span>Итого:</span>
+                <span class="total-amount">0 ₽</span>
+            </div>
+            <button class="checkout-button">Оформить заказ</button>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="product-modal">
+        <div class="product-modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="product-modal-images">
+                <div class="product-modal-image-container">
+                    <img src="" alt="" class="product-modal-image">
+                    <button class="prev-image">&lt;</button>
+                    <button class="next-image">&gt;</button>
+                </div>
+                <div class="image-dots"></div>
+            </div>
+            <div class="product-modal-info">
+                <h2 class="product-modal-title"></h2>
+                <p class="product-modal-price"></p>
+                <p class="product-modal-description"></p>
+                <div class="product-modal-characteristics">
+                    <h3>Характеристики:</h3>
+                    <ul class="characteristics-list"></ul>
+                </div>
+                <div class="product-modal-care">
+                    <h3>Уход:</h3>
+                    <ul class="care-list"></ul>
+                </div>
+                <button class="add-to-cart-button">Добавить в корзину</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

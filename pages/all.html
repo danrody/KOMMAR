@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все товары - Your Brand</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../js/menu.js" defer></script>
+    <script src="../js/cart.js" defer></script>
+    <script src="../js/products.js" defer></script>
+</head>
+<body>
+    <div class="announcement-bar">
+        <p>NEW COLLECTION OUT NOW</p>
+    </div>
+    
+    <div class="site-wrapper">
+        <!-- Боковое меню -->
+        <aside class="side-menu">
+            <div class="side-menu-header">
+                <h3>КАТАЛОГ</h3>
+                <button class="close-menu"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <nav class="side-menu-nav">
+                <ul class="main-categories">
+                    <li><a href="../index.html">ГЛАВНАЯ</a></li>
+                    <li><a href="all.html">ВСЕ ТОВАРЫ</a></li>
+                    <li><a href="bestseller.html">БЕСТСЕЛЛЕРЫ</a></li>
+                    <li><a href="outerwear.html">ВЕРХНЯЯ ОДЕЖДА</a></li>
+                    <li><a href="hoodies.html">ХУДИ</a></li>
+                    <li><a href="about.html">О БРЕНДЕ</a></li>
+                    <li><a href="delivery.html">ДОСТАВКА</a></li>
+                </ul>
+            </nav>
+
+            <div class="side-menu-footer">
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Основной контент -->
+        <main class="main-content">
+            <header class="main-header">
+                <nav class="main-nav">
+                    <button class="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="logo">
+                        <a href="../">YOUR BRAND</a>
+                    </div>
+                    <div class="nav-right">
+                        <div class="cart">
+                            <a href="#" class="cart-icon"><i class="fas fa-shopping-bag"></i></a>
+                            <span class="cart-count">0</span>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="products-section">
+                <h2>ВСЕ ТОВАРЫ</h2>
+                <div class="product-grid">
+                    <!-- Товары будут добавлены через JavaScript -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Корзина -->
+    <div class="cart-modal">
+        <div class="cart-modal-content">
+            <div class="cart-header">
+                <h2>Корзина</h2>
+                <button class="close-cart">&times;</button>
+            </div>
+            <div class="cart-items">
+                <!-- Товары в корзине будут добавляться динамически -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Итого:</span>
+                    <span class="total-amount">0 ₽</span>
+                </div>
+                <button class="checkout-btn">Оформить заказ</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
