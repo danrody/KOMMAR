@@ -53,3 +53,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+document.querySelectorAll('.side-menu-nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        
+        // Если это внутренняя ссылка (не якорь)
+        if (href.includes('.html')) {
+            window.location.href = href; // Простой переход
+            return;
+        }
+
+        // Для якорных ссылок (плавный скролл)
+        e.preventDefault();
+        closeMenu();
+        setTimeout(() => {
+            document.querySelector(href)?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }, 300);
+    });
+});
+
