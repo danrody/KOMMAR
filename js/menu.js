@@ -53,6 +53,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
 document.querySelectorAll('.side-menu-nav a').forEach(link => {
     link.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
