@@ -65,7 +65,28 @@ const products = [
     },
     {
         id: 5,
-        name: 'FLOWERS T-SHIRT',
+        name: 'CROPPED SWEATER',
+        price: '6990 ₽',
+        images: [
+            '../photo/flowers t-shirt/photo_2025-01-27_23-57-49.jpg',
+            '../photo/cropped sweater/ггггггггггггг.jpg'
+        ],
+        category: 'sweaters',
+        description: 'Укороченный свитер в стильном дизайне',
+        characteristics: [
+            'Материал: 100% хлопок',
+            'Укороченный фасон',
+            'Свободный крой'
+        ],
+        care: [
+            'Стирка при 30°',
+            'Не отбеливать',
+            'Не сушить в машине'
+        ]
+    },
+    {
+        id: 6,
+        name: 'FLOWES T-SHIRT',
         price: '3990 ₽',
         images: [
             '../photo/flowers t-shirt/image_2025-01-27_22-31-51.png',
@@ -109,65 +130,28 @@ function renderProducts() {
     `).join('');
 }
 
-// Функция для открытия модального окна с товаром
-function openProductModal(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
+document.addEventListener('DOMContentLoaded', function() {
 
-    const modal = document.createElement('div');
-    modal.className = 'product-modal';
-    modal.innerHTML = `
-        <div class="product-modal-content">
-            <button class="close-modal">&times;</button>
-            <div class="product-modal-gallery">
-                <div class="main-image">
-                    <img src="${product.images[0]}" alt="${product.name}">
-                </div>
-                <div class="thumbnail-list">
-                    ${product.images.map((img, index) => `
-                        <div class="thumbnail${index === 0 ? ' active' : ''}" onclick="changeMainImage(this, '${img}')">
-                            <img src="${img}" alt="${product.name}">
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-            <div class="product-modal-info">
-                <h2>${product.name}</h2>
-                <p class="price">${product.price}</p>
-                <p class="description">${product.description}</p>
-                <div class="characteristics">
-                    <h3>Характеристики:</h3>
-                    <ul>
-                        ${product.characteristics.map(char => `<li>${char}</li>`).join('')}
-                    </ul>
-                </div>
-                <div class="care">
-                    <h3>Уход:</h3>
-                    <ul>
-                        ${product.care.map(care => `<li>${care}</li>`).join('')}
-                    </ul>
-                </div>
-                <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Добавить в корзину</button>
-            </div>
-        </div>
-    `;
-
-    document.body.appendChild(modal);
-    document.body.style.overflow = 'hidden';
-
-    const closeBtn = modal.querySelector('.close-modal');
-    closeBtn.addEventListener('click', () => {
-        modal.remove();
-        document.body.style.overflow = '';
-    });
-
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.remove();
-            document.body.style.overflow = '';
-        }
-    });
-}
+    var modalButtons = document.querySelectorAll('.js-open-modal'),
+        overlay      = document.querySelector('#overlay-modal'),
+        closeButtons = document.querySelector('.js-modal-close');
+ 
+ 
+    modalButtons.forEach(function(item){
+ 
+       item.addEventListener('click', function(e) {
+ 
+          e.preventDefault();
+ 
+          var modalId = this.getAttribute('data-modal'),
+              modalElem = document.querySelector('.modal[data-modal="' + modalId + '"]');
+ 
+          modalElem.classList.add('active');
+          overlay.classList.add('active');
+ 
+       }); // end click
+    }); // end foreach
+ }); // end ready
 // Функция для рендера карточек на главной
 function renderHomeProducts() {
     const container = document.getElementById('featuredProducts');
@@ -220,3 +204,82 @@ function changeMainImage(thumbnail, imageSrc) {
 document.addEventListener('DOMContentLoaded', renderProducts);
 // В функции renderProducts обновите строку с изображением:
 `<img src="${product.images[0]}" alt="${product.name}" loading="lazy" style="height: 400px; object-fit: cover;">`
+
+// Открываем меню карточки товара
+$('.product-card').on('click', function() {
+    $(this).find('.product-menu').fadeIn();
+  });
+  
+  // Закрываем меню карточки товара
+  $('.product-menu .close-menu').on('click', function() {
+    $(this).closest('.product-menu').fadeOut();
+  });
+
+  // Добавляем товар в корзину
+$('.product-menu .add-to-cart').on('click', function() {
+    // Код для добавления товара в корзину
+    console.log('Товар добавлен в корзину');
+  });
+
+// Create product cards
+function createProductCard(product) {
+    return `
+        <div class="product-card" data-product-id="${product.id}">
+            <div class="product-image">
+                <img src="${product.images[0]}" alt="${product.name}">
+            </div>
+            <div class="product-info">
+                <h3>${product.name}</h3>
+                <div class="price">${product.price}</div>
+            </div>
+        </div>
+    `;
+}
+
+// Initialize product menu functionality
+function initializeProductMenu() {
+    const productCards = document.querySelectorAll('.product-card');
+    const productMenu = document.querySelector('.product-menu');
+    const productMenuOverlay = document.querySelector('.product-menu-overlay');
+    const closeProductMenu = document.querySelector('.close-product-menu');
+
+    productCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const title = card.querySelector('.product-info h3').textContent;
+            const price = card.querySelector('.price').textContent;
+            const imageUrl = card.querySelector('.product-image img').src;
+
+            // Update product menu content
+            document.querySelector('.product-menu-title').textContent = title;
+            document.querySelector('.product-menu-price').textContent = price;
+            document.querySelector('.product-menu-image').src = imageUrl;
+            
+            // Show menu and overlay
+            productMenu.classList.add('active');
+            productMenuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Close menu handlers
+    [closeProductMenu, productMenuOverlay].forEach(element => {
+        element.addEventListener('click', () => {
+            productMenu.classList.remove('active');
+            productMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+}
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    const productGrid = document.querySelector('.product-grid');
+    
+    // Load products
+    if (productGrid) {
+        productGrid.innerHTML = products.map(product => createProductCard(product)).join('');
+        
+        // Initialize product menu after products are loaded
+        initializeProductMenu();
+    }
+});
